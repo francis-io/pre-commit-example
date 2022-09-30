@@ -1,0 +1,6 @@
+# Additional checks for pre-commit to run in this repo
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.75.0
+    hooks:
+      - id: terraform_fmt
+      - id: terraform_docs

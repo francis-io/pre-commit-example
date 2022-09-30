@@ -1,18 +1,4 @@
-ifneq (,)
-.error This Makefile requires GNU Make.
-endif
-
-# Supress printing of the make command
-.SILENT:
-
-.DEFAULT_GOAL := help
-
-help: ## This help.
-	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
-
-
-.PHONY: fmt-check
-install-pre-commit: ## Installs pre-commit hooks
+install-pre-commit:
 	# pull the latest pre-commit code via the submodule
 	git submodule update --init --recursive
 
@@ -22,6 +8,6 @@ install-pre-commit: ## Installs pre-commit hooks
 	# Install the pre-commit hooks
 	pre-commit install
 
-.PHONY: run
-run: install-pre-commit ## Runs the pre-commit hooks
+run:
+	@$(MAKE) install-pre-commit  # The install task is quite light, so lets just run it every time run pre-commit
 	pre-commit run --all-files

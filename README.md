@@ -1,10 +1,11 @@
 # pre-commit-example
 
-The point of this repo is to demonstrate how you would centrally manage a `pre-commit-conifg.yaml` file, but also allowing local execution and additional repo specific checks.
+The point of this repo is to demonstrate how you would centrally manage a pre-commit config, but also allowing a repo to extend these checks. It also supports local execution.
 
-```
+I have implemented this logic in a `Makefile`. I would expect a check in GitHub to also run `make run`.
+
 Running `make run` will:
-    1) pull the latest version of the submodule inside `pre-commit-example-central-config` that holds the checks we want on all repos
-    2) Combine that file with any additional checks in `.pre-commit-config-extended.yaml` that exists in this repo into a single `.pre-commit-config.yaml` file
-    3) Installs and runs the combined checks
-```
+
+1) pull the latest version of the submodule inside `pre-commit-example-central-config`
+2) Combine that file with any additional checks found in `.pre-commit-config-extended.yaml` in this repo into a single `.pre-commit-config.yaml` file
+3) Installs and runs the combined config
