@@ -1,0 +1,3 @@
+[submodule "pre-commit-example-central-config"]
+	path = pre-commit-example-central-config
+	url = git@github.com:francis-io/pre-commit-example-central-config.git
